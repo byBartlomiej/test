@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wylosuj prezent</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: arial;
+            font-size: 1.2rem;
+        }
+
+        body {
+            background-image: url(christmas.png);
+            background-size: cover;
+            text-align: center;
+        }
+
+        div#one {
+            margin-top: 20vh;
+            text-shadow: 0 0 10px white;
+            font-size: 1.5rem;
+        }
+
+        form {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            height: 50px;
+            margin-top: 2vh;
+        }
+
+        form input,
+        form button {
+            font-size: 1.2rem;
+            width: 250px;
+            background-color: #fff;
+            border: 1px solid black;
+            margin-right: 20px;
+        }
+
+        form input {
+            padding-left: 20px;
+        }
+
+        button.result {
+            display: block;
+            text-align: center;
+            color: rgb(189, 6, 43);
+            background-color: rgb(177, 243, 177);
+            border: none;
+            font-size: 1.2rem;
+            width: 300px;
+            height: 50px;
+            margin: 30px auto;
+            box-shadow: 0 0 6px 0 chartreuse;
+            user-select: none;
+            transition: .4s;
+        }
+
+        button.result:hover {
+            color: orangered;
+            font-size: 1.3rem;
+        }
+
+        div.result {
+            font-size: 1.8rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            text-shadow: 0 0 10px white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="one">Co chciałbyś dostać na święta? wybierz 5 rzeczy.</div>
+    <form>
+        <input type="text" placeholder="wpisz tutaj"><button>Dodaj</button>
+    </form>
+    <button class="result">WYLOSUJ PREZENT!</button>
+    <div class="result"></div>
+    <script>
+        const div = document.getElementById("one");
+        const btn = document.querySelector("form > button");
+        const btnResult = document.querySelector("button.result");
+        const divResult = document.querySelector("div.result");
+        const gifts = [];
+        const prefixs = ["Mikołaj przyniósł Ci ", "Pod choinką znajdziesz ", "Na gwiazdkę otrzymujesz "];
+        let btnOn = false;
+
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const input = document.querySelector("form > input");
+            const newGift = input.value;
+            if (input.value && !btnOn) {
+                //pętla for of wykonuje się sprawdzając tablicę.
+                for (gift of gifts) {
+                    if (gift === newGift) {
+                        input.value = "";
+                        div.textContent = "To już było!";
+                        return
+                    }
+                }
+                gifts.push(newGift);
+                input.value = "";
+                div.textContent = `${gifts.join(" ")} | jeszcze ${5 - gifts.length}`;
+                if (gifts.length === 5) {
+                    div.textContent = "Teraz wylosuj prezent!";
+                    btnOn = true;
+                    return;
+                }
+            }
+        })
+        const chooseGift = () => {
+            if (btnOn) {
+                divResult.textContent =
+                    `${prefixs[Math.floor(Math.random() * prefixs.length)]} ${gifts[Math.floor(Math.random() * gifts.length)]}.`;
+            } else {
+                divResult.textContent = "Pierw dodaj prezenty!";
+            }
+        }
+        btnResult.addEventListener("click", chooseGift);
+    </script>
+</body>
+
+</html>
