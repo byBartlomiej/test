@@ -69,6 +69,10 @@
             display: inline-block;
         }
 
+        .select img:hover {
+            box-shadow: 0 0 10px 10px rgb(255, 255, 88);
+        }
+
         button {
             display: block;
             padding: 5px 20px;
@@ -89,6 +93,26 @@
 
         span {
             font-weight: bold;
+        }
+
+        div.fun {
+            position: absolute;
+            top: 20%;
+            left: -300px;
+            width: 260px;
+            height: 194px;
+            background-image: url(fun.jpg);
+            box-shadow: 3px 3px 10px 1px black;
+            transition: 1s;
+        }
+
+        div.author {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            width: 32px;
+            height: 32px;
+            background-image: url(favicon.png);
         }
     </style>
 </head>
@@ -124,7 +148,8 @@
         <p class="losses">przegranych: <span>0</span></p>
         <p class="draws">remisów: <span>0</span></p>
     </div>
-
+    <div class="fun"></div>
+    <div class="author"></div>
     <script src="game.js"></script>
 </body>
 
