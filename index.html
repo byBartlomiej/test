@@ -87,7 +87,7 @@
 </head>
 
 <body>
-    <div id="one">Co chciałbyś dostać na święta? wybierz 5 rzeczy.</div>
+    <div id="one">Co chcesz dostać na święta? wybierz 5 rzeczy.</div>
     <form>
         <input type="text" placeholder="wpisz tutaj"><button>Dodaj</button>
     </form>
@@ -99,7 +99,7 @@
         const btnResult = document.querySelector("button.result");
         const divResult = document.querySelector("div.result");
         const gifts = [];
-        const prefixs = ["Mikołaj przyniósł Ci ", "Pod choinką znajdziesz ", "Na gwiazdkę otrzymujesz "];
+        const prefixs = ["Mikołaj przyniesie Ci ", "Pod choinką znajdziesz ", "Na gwiazdkę otrzymasz "];
         let btnOn = false;
 
         btn.addEventListener("click", (e) => {
@@ -121,7 +121,7 @@
                 }
                 gifts.push(newGift);
                 input.value = "";
-                div.textContent = `${gifts.join(" ")} | jeszcze ${5 - gifts.length}`;
+                div.textContent = `${gifts.join(", ")} | jeszcze ${5 - gifts.length}`;
                 if (gifts.length === 5) {
                     div.textContent = "Teraz wylosuj prezent!";
                     btnOn = true;
