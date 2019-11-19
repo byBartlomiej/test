@@ -14,6 +14,11 @@ const textResult = document.querySelector("h2 span");
 //Wybór gracza
 imgsGame.forEach((oneImg) => {
     oneImg.addEventListener("click", (e) => {
+        //czyszczenie wyników przed grą
+        document.querySelector('[data-summary="your-choice"]').textContent = "";
+        document.querySelector('[data-summary="ai-choice"]').textContent = "";
+        textResult.textContent = "";
+
         game.playerHand = e.target.dataset.option;
         imgsGame.forEach(img => img.style.boxShadow = "");
         e.target.style.boxShadow = "0 0 10px 10px rgb(235, 119, 10)";
