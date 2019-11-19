@@ -107,6 +107,7 @@
             const input = document.querySelector("form > input");
             const newGift = input.value;
             if (input.value.length >= 20) {
+                input.value = "";
                 div.textContent = "Wymyśl coś krótszego...";
                 return
             }
