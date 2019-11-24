@@ -5,152 +5,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Roboto&amp;subset=latin-ext" rel="stylesheet">
-    <link rel="icon" href="favicon.png">
-
-    <title>Gra papier kamień nożyczki</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap&subset=latin-ext" rel="stylesheet">
+    <title></title>
     <style>
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: roboto, sans-serif;
+            /* box-sizing: border-box; */
         }
 
-        h1 {
-            text-align: center;
-            margin: 20px 0;
+        body {
+            position: relative;
+            height: 100vh;
         }
 
-        h3 {
-            margin: 30px 0;
-        }
-
-        .panel {
-            margin: 20px;
-        }
-
-        .panel-left,
-        .panel-right {
-            display: inline-block;
-            width: 48%;
-            overflow: hidden;
-            margin: 40px auto 0;
-            text-align: center;
-        }
-
-        .panel-left p {
-            font-size: 20px;
-        }
-
-        .panel h3 {
-            text-align: center;
-        }
-
-        h1,
-        h3 {
-            text-transform: uppercase;
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100vh;
         }
 
         h2 {
-            font-size: 40px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            line-height: 100%;
+            color: wheat;
+            font-size: 3rem;
+            letter-spacing: 2px;
+            font-family: 'Roboto Mono', monospace;
+            text-shadow: 3px 3px 5px black;
         }
 
-        .select {
-            overflow: hidden;
-            text-align: center;
-            margin: 0 auto;
-            max-width: 1000px;
+        div.dots {
+            position: absolute;
+            left: 50%;
+            bottom: 50px;
+            transform: translateX(-50%);
         }
 
-        .select img {
-            width: 200px;
-            margin: 20px;
+        div.dots span {
             display: inline-block;
-        }
-
-        .select img:hover {
-            box-shadow: 0 0 10px 10px rgb(255, 255, 88);
-        }
-
-        button {
-            display: block;
-            padding: 5px 20px;
-            border: 2px solid black;
-            text-transform: uppercase;
             background-color: #fff;
-            font-weight: bold;
-            margin: 10px auto;
-            transition: .3s;
-            font-size: 30px;
+            width: 25px;
+            height: 25px;
+            margin: 10px;
+            border-radius: 50%;
+            box-shadow: 0 0 3px 2px black;
+            transition: .1s;
+        }
+
+        div.dots span:hover {
+            background-color: crimson;
             cursor: pointer;
         }
 
-        button:hover {
-            background-color: rgb(20, 20, 20);
-            color: white
-        }
-
-        span {
-            font-weight: bold;
-        }
-
-        div.fun {
-            position: absolute;
-            top: 20%;
-            left: -300px;
-            width: 260px;
-            height: 194px;
-            background-image: url(fun.jpg);
-            box-shadow: 3px 3px 10px 1px black;
-            transition: 1s;
-        }
-
-        div.author {
-            position: absolute;
-            right: 10px;
-            bottom: 10px;
-            width: 32px;
-            height: 32px;
-            background-image: url(favicon.png);
+        div.dots span.active {
+            box-shadow: 0 0 1px 4px crimson;
         }
     </style>
 </head>
 
 <body>
-    <div class="fun"></div>
-    <h1>Zagrajmy w "PAPIER, KAMIEŃ, NOŻYCZKI"</h1>
 
-    <div class="select">
-
-        <h3>Wybierz:</h3>
-
-        <img data-option="papier" class="first" src="papier.jpg" alt="" title="Papier">
-
-        <img data-option="kamień" src="kamien.jpg" alt="" title="Kamień">
-
-        <img data-option="nożyczki" src="nozyczki.jpg" alt="" title="Nożyczki">
-
+    <img class="slider" src="obraz1.jpg" alt="banner" title="Slajdy możesz również zmieniać strzałkami!">
+    <h2 class="slider" title="Slajdy możesz również zmieniać strzałkami!">Tarnica</h2>
+    <div class="dots">
+        <span data-numb="0" class="active"></span>
+        <span data-numb="1"></span>
+        <span data-numb="2"></span>
+        <span data-numb="3"></span>
     </div>
 
-    <button class="start">Zagraj!</button>
+    <script>
+        const img = document.querySelector("img.slider");
+        const h2 = document.querySelector("h2.slider");
+        const dots = [...document.querySelectorAll(".dots span")];
+        const images = [{
+            imgSrc: "obraz1.jpg",
+            h2Text: "Tarnica",
+        }, {
+            imgSrc: "obraz2.jpg",
+            h2Text: "Solina",
+        }, {
+            imgSrc: "obraz3.jpg",
+            h2Text: "Hotel",
+        }, {
+            imgSrc: "obraz4.jpg",
+            h2Text: "Bieszczady",
+        }];
+        //interfejs
+        const imgTime = 4000;
+        let currentNumber = 0;
+        let flagBtn = false;
 
-    <div class="panel-left">
-        <h3>Wyniki gry</h3>
-        <p>Twój wybór: <span data-summary="your-choice"></span></p>
-        <p>Wybór komputera: <span data-summary="ai-choice"></span></p>
-        <h2>Zwycięzca gry: <span data-summary="who-win"></span></h2>
-    </div>
+        //implementacja
+        const changeDot = () => {
+            const dotToChange = dots.findIndex(dot =>
+                dot.classList.contains("active"));
+            dots[dotToChange].classList.remove("active");
+            dots[currentNumber].classList.add("active");
+        };
 
-    <div class="panel-right">
-        <h3>Aktualne wyniki</h3>
-        <p class="numbers">liczba gier: <span>0</span></p>
-        <p class="wins">wygranych: <span>0</span></p>
-        <p class="losses">przegranych: <span>0</span></p>
-        <p class="draws">remisów: <span>0</span></p>
-    </div>
-    <div class="author"></div>
-    <script src="game.js"></script>
+        const allInOne = () => {
+            img.src = images[currentNumber].imgSrc;
+            h2.textContent = images[currentNumber].h2Text;
+            changeDot();
+        }
+
+        const changeImg = () => {
+            currentNumber++;
+            if (currentNumber == images.length) {
+                currentNumber = 0;
+            }
+            allInOne();
+        };
+        let indexInterval = setInterval(changeImg, imgTime);
+
+
+        window.addEventListener("keydown", (e) => {
+            if (e.keyCode == 39) {
+                currentNumber++;
+                if (currentNumber >= images.length) {
+                    currentNumber = 0;
+                }
+            } else if (e.keyCode == 37) {
+                currentNumber--;
+                if (currentNumber < 0) {
+                    currentNumber = images.length - 1;
+                };
+            }
+            allInOne();
+            clearInterval(indexInterval);
+            indexInterval = setInterval(changeImg, imgTime);
+        });
+
+        window.addEventListener("click", (e) => {
+            if (e.target.dataset.numb == undefined) {
+                console.log("nic nie robie")
+            } else {
+                currentNumber = e.target.dataset.numb;
+                allInOne();
+                clearInterval(indexInterval);
+                indexInterval = setInterval(changeImg, imgTime);
+            }
+        });
+    </script>
 </body>
 
 </html>
