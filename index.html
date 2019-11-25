@@ -12,7 +12,6 @@
         * {
             margin: 0;
             padding: 0;
-            /* box-sizing: border-box; */
         }
 
         body {
@@ -73,8 +72,9 @@
 
 <body>
 
-    <img class="slider" src="obraz1.jpg" alt="banner" title="Slajdy możesz również zmieniać strzałkami!">
-    <h2 class="slider" title="Slajdy możesz również zmieniać strzałkami!">Tarnica</h2>
+    <img class="slider" src="obraz1.jpg" alt="banner"
+        title="Slajdy możesz również zmieniać strzałkami i klikając w kropkę!">
+    <h2 class="slider" title="Slajdy możesz również zmieniać strzałkami i klikając w kropkę!">Tarnica</h2>
     <div class="dots">
         <span data-numb="0" class="active"></span>
         <span data-numb="1"></span>
@@ -125,6 +125,7 @@
             }
             allInOne();
         };
+        //wywołanie
         let indexInterval = setInterval(changeImg, imgTime);
 
 
