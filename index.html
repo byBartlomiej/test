@@ -72,14 +72,13 @@
 
 <body>
 
-    <img class="slider" src="obraz1.jpg" alt="banner"
+    <img class="slider" src="obraz0.jpg" alt="banner"
         title="Slajdy możesz również zmieniać strzałkami i klikając w kropkę!">
     <h2 class="slider" title="Slajdy możesz również zmieniać strzałkami i klikając w kropkę!">Tarnica</h2>
     <div class="dots">
         <span data-numb="0" class="active"></span>
         <span data-numb="1"></span>
         <span data-numb="2"></span>
-        <span data-numb="3"></span>
     </div>
 
     <script>
@@ -87,17 +86,14 @@
         const h2 = document.querySelector("h2.slider");
         const dots = [...document.querySelectorAll(".dots span")];
         const images = [{
-            imgSrc: "obraz1.jpg",
+            imgSrc: "obraz0.jpg",
             h2Text: "Tarnica",
         }, {
-            imgSrc: "obraz2.jpg",
+            imgSrc: "obraz1.jpg",
             h2Text: "Solina",
         }, {
-            imgSrc: "obraz3.jpg",
+            imgSrc: "obraz2.jpg",
             h2Text: "Hotel",
-        }, {
-            imgSrc: "obraz4.jpg",
-            h2Text: "Bieszczady",
         }];
         //interfejs
         const imgTime = 4000;
