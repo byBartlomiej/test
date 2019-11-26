@@ -17,6 +17,12 @@ img {
     height: 100vh;
 }
 
+div.time,
+div.timer {
+    position: absolute;
+    top: 2%
+}
+
 h2 {
     position: absolute;
     top: 50%;
