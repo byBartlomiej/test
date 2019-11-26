@@ -7,75 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap&subset=latin-ext" rel="stylesheet">
     <link rel="icon" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
     <title></title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            position: relative;
-            height: 100vh;
-        }
-
-        img {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100vh;
-        }
-
-        h2 {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            line-height: 100%;
-            color: wheat;
-            font-size: 3rem;
-            letter-spacing: 2px;
-            font-family: 'Roboto Mono', monospace;
-            text-shadow: 3px 3px 5px black;
-        }
-
-        div.dots {
-            position: absolute;
-            left: 50%;
-            bottom: 50px;
-            transform: translateX(-50%);
-        }
-
-        div.dots span {
-            display: inline-block;
-            background-color: #fff;
-            width: 25px;
-            height: 25px;
-            margin: 10px;
-            border-radius: 50%;
-            box-shadow: 0 0 3px 2px black;
-            transition: .1s;
-        }
-
-        div.dots span:hover {
-            background-color: crimson;
-            cursor: pointer;
-        }
-
-        div.dots span.active {
-            box-shadow: 0 0 1px 4px crimson;
-        }
-    </style>
 </head>
 
 <body>
 
-    <img class="slider" src="obraz0.jpg" alt="banner"
-        title="Slajdy możesz również zmieniać strzałkami i klikając w kropkę!">
-    <h2 class="slider" title="Slajdy możesz również zmieniać strzałkami i klikając w kropkę!">Tarnica</h2>
-    <div class="dots">
+    <img class="slider" src="obraz0.jpg" alt="banner">
+    <h2 class="slider"></h2>
+    <div class="dots" title="Slajdy możesz również zmieniać strzałkami i klikając w kropkę!">
         <span data-numb="0" class="active"></span>
         <span data-numb="1"></span>
         <span data-numb="2"></span>
@@ -87,13 +27,13 @@
         const dots = [...document.querySelectorAll(".dots span")];
         const images = [{
             imgSrc: "obraz0.jpg",
-            h2Text: "Tarnica",
+            h2Text: "",
         }, {
             imgSrc: "obraz1.jpg",
-            h2Text: "Solina",
+            h2Text: "",
         }, {
             imgSrc: "obraz2.jpg",
-            h2Text: "Hotel",
+            h2Text: "",
         }];
         //interfejs
         const imgTime = 4000;
