@@ -13,16 +13,21 @@
 
 <body>
     <div class="bg"></div>
-    <form><input type="text"><button>Dodaj zadanie</button></form>
+    <form>
+        <h2>Do zrobienia przed świętami: </h2><input type="text"><button>Dodaj zadanie</button>
+    </form>
     <h1>Ilość zadań do zrobienia przed świętami: <span>0</span></h1>
     <ul></ul>
-
+    <img src="claus.png" alt="mitołaj">
+    <div class="hoho">Hoł hoł hoł mery krismys ;)</div>
     <script>
         const form = document.querySelector("form");
         const input = document.querySelector("input");
         const ul = document.querySelector("ul");
         const createdLi = document.getElementsByClassName("tasks");
         const h1Span = document.querySelector("h1>span");
+        const img = document.querySelector("img");
+        const div = document.querySelector(".hoho");
         const tasksArray = [];
         let numb = 0;
 
@@ -59,6 +64,13 @@
         };
         //wywołanie
         form.addEventListener("submit", addTask);
+        setTimeout(() => {
+            img.style.left = "110%";
+        }, 8000)
+        setTimeout(() => {
+            div.style.opacity = "1";
+            setTimeout(() => div.style.opacity = "0", 3500)
+        }, 9000)
     </script>
 </body>
 
