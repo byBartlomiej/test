@@ -40,7 +40,7 @@
         //interfejs
         const imgTime = 4000;
         let currentNumber = 0;
-        let flagBtn = false;
+        let not2Fast = false;
 
         //implementacja
         const changeDot = () => {
@@ -68,20 +68,25 @@
 
 
         window.addEventListener("keydown", (e) => {
-            if (e.keyCode == 39) {
-                currentNumber++;
-                if (currentNumber >= images.length) {
-                    currentNumber = 0;
+            if (not2Fast) return
+            else {
+                if (e.keyCode == 39) {
+                    currentNumber++;
+                    if (currentNumber >= images.length) {
+                        currentNumber = 0;
+                    }
+                } else if (e.keyCode == 37) {
+                    currentNumber--;
+                    if (currentNumber < 0) {
+                        currentNumber = images.length - 1;
+                    };
                 }
-            } else if (e.keyCode == 37) {
-                currentNumber--;
-                if (currentNumber < 0) {
-                    currentNumber = images.length - 1;
-                };
+                allInOne();
+                clearInterval(indexInterval);
+                indexInterval = setInterval(changeImg, imgTime);
+                not2Fast = true;
+                setTimeout(() => not2Fast = false, 500)
             }
-            allInOne();
-            clearInterval(indexInterval);
-            indexInterval = setInterval(changeImg, imgTime);
         });
 
         window.addEventListener("click", (e) => {
