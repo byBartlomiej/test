@@ -12,66 +12,22 @@
 </head>
 
 <body>
-    <div class="bg"></div>
-    <form>
-        <h2>Do zrobienia przed świętami: </h2><input type="text"><button>Dodaj zadanie</button>
-    </form>
-    <h1>Ilość zadań do zrobienia przed świętami: <span>0</span></h1>
-    <ul></ul>
-    <img src="claus.png" alt="mitołaj">
-    <div class="hoho">Hoł hoł hoł mery krismys ;)</div>
+
+    <div>
+        <video autoplay="autoplay" loop="loop" muted>
+            <source src="jarek.mp4" type="video/mp4" />
+        </video>
+        <audio controls autoplay="autoplay" loop="loop">
+            <source src="audio.mp3" type="audio/ogg">>
+        </audio>
+        <h2>Baśka</h2>
+    </div>
     <script>
-        const form = document.querySelector("form");
-        const input = document.querySelector("input");
-        const ul = document.querySelector("ul");
-        const createdLi = document.getElementsByClassName("tasks");
-        const h1Span = document.querySelector("h1>span");
-        const img = document.querySelector("img");
-        const div = document.querySelector(".hoho");
-        const tasksArray = [];
-        let numb = 0;
-
-
-        //implementacja
-        const refreshTasksList = () => {
-            ul.textContent = '';
-            tasksArray.forEach((taskLi, index) => {
-                taskLi.dataset.key = index
-                ul.appendChild(taskLi)
-            });
-            h1Span.textContent = tasksArray.length;
-        };
-
-        const removeTask = (e) => {
-            e.target.parentNode.style.textDecoration = "line-through";
-            e.target.remove();
-            numb++
-            h1Span.textContent = tasksArray.length - numb;
-        };
-
-        const addTask = (e) => {
-            e.preventDefault();
-            const task = input.value;
-            input.value = "";
-            if (tasksArray.length >= 15) return alert("Hmmm, więcej i tak nie zrobisz...")
-            if (!task) return alert("wpisz zadanie w puste pole")
-            const newTaskLi = document.createElement("li");
-            newTaskLi.classList.add("tasks");
-            newTaskLi.innerHTML = task + "<button> kliknij jak zrobione </button>";
-            tasksArray.push(newTaskLi);
-            refreshTasksList();
-            newTaskLi.querySelector("button").addEventListener("click", removeTask);
-        };
-        //wywołanie
-        form.addEventListener("submit", addTask);
-        setTimeout(() => {
-            img.style.left = "110%";
-            img.style.bottom = "-20%";
-        }, 8000)
-        setTimeout(() => {
-            div.style.opacity = "1";
-            setTimeout(() => div.style.opacity = "0", 3500)
-        }, 9000)
+        const audio = document.querySelector("audio");
+        window.addEventListener("click", () => {
+            audio.removeAttribute("controls");
+            console.log(audio)
+        });
     </script>
 </body>
 
