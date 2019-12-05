@@ -22,8 +22,8 @@
     <form action="submit"><input type="text" placeholder="Podaj stawkę!"><button class="play">Zakręć!</button></form>
     <div class="interface">
         <h3>Twoje saldo to: <span class="money">100</span> ₿*</h3>
-        <p>Rozegrałeś gier: <span class="gameNumb">0</span> ,w tym wygranych <span class="winNumb">0</span> i
-            przegranych <span class="losesNumb">0</span></p>
+        <p>Rozegrałeś gier: <span class="gameNumb">0</span> ,w tym wygranych: <span class="winNumb">0</span> i
+            przegranych: <span class="losesNumb">0</span></p>
     </div>
     <footer>
         <p>* Bartków ;D</p>
@@ -37,6 +37,7 @@
         //implementacja
         const startGame = (e) => {
             e.preventDefault();
+            alert("Gra w trakcie produkcji ;)")
         }
         submit.addEventListener("submit", startGame);
     </script>
