@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap&subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap&subset=latin-ext"
+        rel="stylesheet">
     <link rel="icon" href="favicon.png">
     <link rel="stylesheet" href="style.css">
     <title></title>
@@ -18,7 +19,7 @@
         <div></div>
         <div></div>
     </div>
-    <form action="submit"><input type="text"><button class="play"></button></form>
+    <form action="submit"><input type="text" placeholder="Podaj stawkę!"><button class="play">Zakręć!</button></form>
     <div class="interface">
         <h3>Twoje saldo to: <span class="money">100</span> ₿*</h3>
         <p>Rozegrałeś gier: <span class="gameNumb">0</span> ,w tym wygranych <span class="winNumb">0</span> i
@@ -28,7 +29,16 @@
         <p>* Bartków ;D</p>
     </footer>
     <script>
+        const btnPlay = document.querySelector("play");
+        const submit = document.querySelector("form")
 
+        //interfejs
+
+        //implementacja
+        const startGame = (e) => {
+            e.preventDefault();
+        }
+        submit.addEventListener("submit", startGame);
     </script>
 </body>
 
