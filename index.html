@@ -12,22 +12,23 @@
 </head>
 
 <body>
-
-    <div>
-        <video autoplay="autoplay" loop="loop" muted>
-            <source src="jarek.mp4" type="video/mp4" />
-        </video>
-        <audio controls autoplay="autoplay" loop="loop">
-            <source src="audio.mp3" type="audio/ogg">>
-        </audio>
-        <h2>Baśka</h2>
+    <h2>JEDNORĘKI BANDYTA</h2>
+    <div class="game">
+        <div></div>
+        <div></div>
+        <div></div>
     </div>
+    <form action="submit"><input type="text"><button class="play"></button></form>
+    <div class="interface">
+        <h3>Twoje saldo to: <span class="money">100</span> ₿*</h3>
+        <p>Rozegrałeś gier: <span class="gameNumb">0</span> ,w tym wygranych <span class="winNumb">0</span> i
+            przegranych <span class="losesNumb">0</span></p>
+    </div>
+    <footer>
+        <p>* Bartków ;D</p>
+    </footer>
     <script>
-        const audio = document.querySelector("audio");
-        window.addEventListener("click", () => {
-            audio.removeAttribute("controls");
-            console.log(audio)
-        });
+
     </script>
 </body>
 
