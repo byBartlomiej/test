@@ -31,8 +31,21 @@ div.game {
 div.game div {
     width: 25vw;
     height: 35vh;
-    background-color: #888;
+    background-color: #222;
     box-shadow: 0 0 8px 2px white;
+    text-align: center;
+    background-image: url(0.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+div.game div.symbol1 {
+    background-image: url(1.png);
+}
+
+div.game div.symbol2 {
+    background-image: url(2.png);
 }
 
 form {
@@ -56,11 +69,11 @@ form button {
     font-weight: bold;
     transition: .1s;
     outline: none;
+    background-color: wheat;
 }
 
 form input:hover {
     background-color: rgb(243, 225, 59);
-    box-shadow: 0 0 5px 1px wheat;
 }
 
 form button {

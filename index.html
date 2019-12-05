@@ -15,11 +15,12 @@
 <body>
     <h2>JEDNORĘKI BANDYTA</h2>
     <div class="game">
-        <div></div>
-        <div></div>
-        <div></div>
+        <div class="symbol" data-numb="0"></div>
+        <div class="symbol1" data-numb="1"></div>
+        <div class="symbol2" data-numb="2"></div>
+        <!-- do usunięcia numer przy nazwie klasy! -->
     </div>
-    <form action="submit"><input type="text" placeholder="Podaj stawkę!"><button class="play">Zakręć!</button></form>
+    <form action="submit"><input type="number" placeholder="Podaj stawkę!"><button class="play">Zakręć!</button></form>
     <div class="interface">
         <h3>Twoje saldo to: <span class="money">100</span> ₿*</h3>
         <p>Rozegrałeś gier: <span class="gameNumb">0</span> ,w tym wygranych: <span class="winNumb">0</span> i
@@ -38,7 +39,7 @@
         //implementacja
         const startGame = (e) => {
             e.preventDefault();
-            alert("Gra w trakcie produkcji ;)")
+            alert("BRAKUJE MOCY!")
         }
         submit.addEventListener("submit", startGame);
     </script>
