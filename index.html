@@ -95,10 +95,10 @@
             losesNumb.textContent = stats.loses;
             if (player.win) {
                 h2Text.style.color = "lawngreen";
-                h2Text.textContent = "WYGRALEŚ";
+                h2Text.textContent = `WYGRALEŚ ${wallet.bet * 5} ₿*`;
             } else if (player.lose) {
                 h2Text.style.color = "orangered";
-                h2Text.textContent = "PRZEGRALEŚ";
+                h2Text.textContent = `PRZEGRALEŚ ${wallet.bet} ₿*`;
             }
         };
 
