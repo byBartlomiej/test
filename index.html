@@ -94,11 +94,16 @@
             winsNumb.textContent = stats.wins;
             losesNumb.textContent = stats.loses;
             if (player.win) {
-                h2Text.style.color = "lawngreen";
-                h2Text.textContent = `WYGRALEŚ ${wallet.bet * 5} ₿*`;
+                setTimeout(() => {
+                    h2Text.style.color = "lawngreen";
+                    h2Text.textContent = `WYGRALEŚ ${wallet.bet * 5} ₿*`;
+                }, 600)
+
             } else if (player.lose) {
-                h2Text.style.color = "orangered";
-                h2Text.textContent = `PRZEGRALEŚ ${wallet.bet} ₿*`;
+                setTimeout(() => {
+                    h2Text.style.color = "orangered";
+                    h2Text.textContent = `PRZEGRALEŚ ${wallet.bet} ₿*`;
+                }, 600)
             }
         };
 
@@ -122,7 +127,6 @@
                 const symbol1 = draw();
                 const symbol2 = draw();
                 const symbol3 = draw();
-                console.log(symbol1, symbol2, symbol3);
                 checkResult(symbol1, symbol2, symbol3);
                 showResult();
             }
