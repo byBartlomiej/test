@@ -9,7 +9,7 @@ body {
     position: relative;
     height: 100vh;
     overflow: hidden;
-    background-image: linear-gradient(90deg, red, black 5%, black 40%, Darkmagenta 42%, Darkmagenta 45%, wheat 46%, wheat 54%, Darkmagenta 55%, Darkmagenta 58%, black 60%, black 95%, red);
+    background-image: linear-gradient(90deg, deepskyblue, black 5%, black 35%, Darkmagenta 37%, fuchsia 40%, wheat 40.1%, wheat 59.9%, fuchsia 60%, Darkmagenta 63%, black 65%, black 95%, deepskyblue);
 
 }
 
@@ -19,6 +19,7 @@ h2 {
     text-align: center;
     color: rgb(255, 193, 36);
     text-shadow: 1px 1px 5px #000;
+    cursor: default;
     /* animation: color 6s infinite; */
 }
 
@@ -32,7 +33,7 @@ div.game div {
     width: 25vw;
     height: 35vh;
     background-color: #222;
-    box-shadow: 0 0 8px 2px white;
+    box-shadow: 0 0 8px 2px springgreen;
     text-align: center;
     background-image: url(0.png);
     background-size: contain;
@@ -40,12 +41,34 @@ div.game div {
     background-repeat: no-repeat;
 }
 
-div.game div.symbol1 {
-    background-image: url(1.png);
+div.game div.symbol.active {
+    animation: spin .6s ease;
 }
 
-div.game div.symbol2 {
-    background-image: url(2.png);
+@keyframes spin {
+    0% {
+        background-image: url(1.png);
+    }
+
+    16% {
+        background-image: url(0.png);
+    }
+
+    33% {
+        background-image: url(2.png);
+    }
+
+    50% {
+        background-image: url(0.png);
+    }
+
+    69% {
+        background-image: url(2.png);
+    }
+
+    86% {
+        background-image: url(1.png);
+    }
 }
 
 form {
@@ -69,6 +92,7 @@ form button {
     font-weight: bold;
     transition: .1s;
     outline: none;
+    text-align: center;
     background-color: wheat;
 }
 
@@ -103,6 +127,7 @@ div.interface p {
     font-size: 1.5rem;
     color: #eee;
     text-shadow: 1px 1px 5px #000;
+    cursor: default;
 }
 
 div.interface p {
@@ -144,6 +169,6 @@ footer p {
     }
 
     body {
-        background-image: linear-gradient(90deg, red, black 5%, black 40%, Darkmagenta 42%, Darkmagenta 45%, royalblue 46%, royalblue 54%, Darkmagenta 55%, Darkmagenta 58%, black 60%, black 95%, red);
+        background-image: linear-gradient(90deg, deepskyblue, black 5%, black 40%, royalblue 42%, deepskyblue 48%, deepskyblue 52%, royalblue 58%, black 60%, black 95%, deepskyblue);
     }
 }

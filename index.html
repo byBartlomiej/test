@@ -13,18 +13,17 @@
 </head>
 
 <body>
-    <h2>JEDNORĘKI BANDYTA</h2>
+    <h2 class="result">JEDNORĘKI BANDYTA</h2>
     <div class="game">
         <div class="symbol" data-numb="0"></div>
-        <div class="symbol1" data-numb="1"></div>
-        <div class="symbol2" data-numb="2"></div>
-        <!-- do usunięcia numer przy nazwie klasy! -->
+        <div class="symbol" data-numb="1"></div>
+        <div class="symbol" data-numb="2"></div>
     </div>
     <form action="submit"><input type="number" placeholder="Podaj stawkę!"><button class="play">Zakręć!</button></form>
     <div class="interface">
         <h3>Twoje saldo to: <span class="money">100</span> ₿*</h3>
-        <p>Rozegrałeś gier: <span class="gameNumb">0</span> ,w tym wygranych: <span class="winNumb">0</span> i
-            przegranych: <span class="losesNumb">0</span></p>
+        <p>Rozegrałeś gier: <span class="gameNumb"></span> ,w tym wygranych: <span class="winNumb"></span> i
+            przegranych: <span class="losesNumb"></span></p>
     </div>
     <img class="face" src="face.png" alt="face of The Godfater">
     <footer>
@@ -32,16 +31,103 @@
     </footer>
     <script>
         const btnPlay = document.querySelector("play");
-        const submit = document.querySelector("form")
+        const form = document.querySelector("form");
+        const input = document.querySelector("input");
+        const symbols = [document.querySelector(`[data-numb="0"]`), document.querySelector(`[data-numb="1"]`), document
+            .querySelector(`[data-numb="2"]`)
+        ];
+        const h2Text = document.querySelector("h2");
+        const plrMoney = document.querySelector(".money");
+        const gamesNumb = document.querySelector(".gameNumb");
+        const winsNumb = document.querySelector(".winNumb");
+        const losesNumb = document.querySelector(".losesNumb");
+        const symbolsArr = [0, 1, 2]
+
+        const stats = {
+            games: 0,
+            wins: 0,
+            loses: 0,
+        }
+
+        const wallet = {
+            plrMoney: 100,
+            bet: 0,
+        }
+        const player = {
+            win: false,
+            lose: false,
+
+        }
+
 
         //interfejs
 
         //implementacja
+        const cleaning = () => {
+            input.value = "";
+            player.win = false;
+            player.lose = false;
+        };
+        const draw = () => {
+            return symbolsArr[Math.floor(Math.random() * symbolsArr.length)];
+        };
+        const checkResult = (res1, res2, res3) => {
+            symbols[0].style.backgroundImage = `url(${res1}.png)`;
+            symbols[1].style.backgroundImage = `url(${res2}.png)`;
+            symbols[2].style.backgroundImage = `url(${res3}.png)`;
+            console.log(symbols[0], res1);
+            if ((res1 === res2 && res1 === res3) || (res1 !== res2 && res1 !== res3 && res2 !== res3)) {
+                player.win = true;
+                wallet.plrMoney += wallet.bet * 5;
+                stats.wins++;
+                console.log("wygrana");
+            } else {
+                player.lose = true;
+                stats.loses++;
+                console.log("przegrana");
+            }
+        };
+        const showResult = () => {
+            stats.games++;
+            plrMoney.textContent = wallet.plrMoney;
+            gamesNumb.textContent = stats.games;
+            winsNumb.textContent = stats.wins;
+            losesNumb.textContent = stats.loses;
+            if (player.win) {
+                h2Text.style.color = "lawngreen";
+                h2Text.textContent = "WYGRALEŚ";
+            } else if (player.lose) {
+                h2Text.style.color = "orangered";
+                h2Text.textContent = "PRZEGRALEŚ";
+            }
+        };
+
         const startGame = (e) => {
             e.preventDefault();
-            alert("BRAKUJE MOCY!")
+            if (wallet.plrMoney == 0) {
+                return alert("Zostałeś goły i wesoły ;D odśwież stronę ,aby zagrać ponownie");
+            }
+            wallet.bet = input.value;
+            if (!wallet.bet || wallet.bet <= 0) {
+                alert("Podaj stawkę!")
+            } else if (wallet.bet > wallet.plrMoney) {
+                alert("NIE OSZUKUJ!")
+            } else {
+                wallet.plrMoney -= wallet.bet;
+                symbols.forEach(symbol => symbol.classList.toggle("active"));
+                setTimeout(() => {
+                    symbols.forEach(symbol => symbol.classList.toggle("active"))
+                }, 700);
+                cleaning();
+                const symbol1 = draw();
+                const symbol2 = draw();
+                const symbol3 = draw();
+                console.log(symbol1, symbol2, symbol3);
+                checkResult(symbol1, symbol2, symbol3);
+                showResult();
+            }
         }
-        submit.addEventListener("submit", startGame);
+        form.addEventListener("submit", startGame);
     </script>
 </body>
 
