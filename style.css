@@ -153,14 +153,15 @@ footer {
     left: 0;
     width: 100vw;
     height: 3vh;
-    transform: translateY(-3.5vh);
+    transform: translateY(-100%);
     min-height: 20px;
     font-size: .8rem;
     color: #eee;
+    text-align: right;
 }
 
 footer p {
-    margin-left: 20px;
+    margin-right: 20px;
 }
 
 @media (max-width: 1010px) {
