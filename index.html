@@ -78,7 +78,7 @@
             console.log(symbols[0], res1);
             if ((res1 === res2 && res1 === res3) || (res1 !== res2 && res1 !== res3 && res2 !== res3)) {
                 player.win = true;
-                wallet.plrMoney += wallet.bet * 5;
+                wallet.plrMoney += wallet.bet * 3;
                 stats.wins++;
                 console.log("wygrana");
             } else {
@@ -94,16 +94,11 @@
             winsNumb.textContent = stats.wins;
             losesNumb.textContent = stats.loses;
             if (player.win) {
-                setTimeout(() => {
-                    h2Text.style.color = "lawngreen";
-                    h2Text.textContent = `WYGRALEŚ ${wallet.bet * 5} ₿*`;
-                }, 600)
-
+                h2Text.style.color = "lawngreen";
+                h2Text.textContent = `WYGRALEŚ ${wallet.bet * 3} ₿*`;
             } else if (player.lose) {
-                setTimeout(() => {
-                    h2Text.style.color = "orangered";
-                    h2Text.textContent = `PRZEGRALEŚ ${wallet.bet} ₿*`;
-                }, 600)
+                h2Text.style.color = "orangered";
+                h2Text.textContent = `PRZEGRALEŚ ${wallet.bet} ₿*`;
             }
         };
 
@@ -121,14 +116,15 @@
                 wallet.plrMoney -= wallet.bet;
                 symbols.forEach(symbol => symbol.classList.toggle("active"));
                 setTimeout(() => {
-                    symbols.forEach(symbol => symbol.classList.toggle("active"))
+                    symbols.forEach(symbol => symbol.classList.toggle("active"));
+                    cleaning();
+                    const symbol1 = draw();
+                    const symbol2 = draw();
+                    const symbol3 = draw();
+                    checkResult(symbol1, symbol2, symbol3);
+                    console.log(symbol1, symbol2, symbol3)
+                    showResult();
                 }, 700);
-                cleaning();
-                const symbol1 = draw();
-                const symbol2 = draw();
-                const symbol3 = draw();
-                checkResult(symbol1, symbol2, symbol3);
-                showResult();
             }
         }
         form.addEventListener("submit", startGame);
