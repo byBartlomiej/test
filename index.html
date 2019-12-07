@@ -15,13 +15,13 @@
 <body>
     <h2 class="result">JEDNORĘKI BANDYTA</h2>
     <div class="game">
-        <div class="symbol" data-numb="0"></div>
-        <div class="symbol" data-numb="1"></div>
-        <div class="symbol" data-numb="2"></div>
+        <div class="symbol"></div>
+        <div class="symbol"></div>
+        <div class="symbol"></div>
     </div>
     <form action="submit"><input type="number" placeholder="Podaj stawkę!"><button class="play">Zakręć!</button></form>
     <div class="interface">
-        <h3>Twoje saldo to: <span class="money">100</span> ₿*</h3>
+        <h3>Twoje saldo to: <span class="money">100</span> B*</h3>
         <p>Rozegrałeś gier: <span class="gameNumb"></span> ,w tym wygranych: <span class="winNumb"></span> i
             przegranych: <span class="losesNumb"></span></p>
     </div>
@@ -30,19 +30,17 @@
         <p>* Bartków ;D</p>
     </footer>
     <script>
-        const btnPlay = document.querySelector("play");
+        //Moja wersja
+        const btnPlay = document.querySelector(".play");
         const form = document.querySelector("form");
         const input = document.querySelector("input");
-        const symbols = [document.querySelector(`[data-numb="0"]`), document.querySelector(`[data-numb="1"]`), document
-            .querySelector(`[data-numb="2"]`)
-        ];
+        const symbols = [...document.querySelectorAll(".symbol")];
         const h2Text = document.querySelector("h2");
         const plrMoney = document.querySelector(".money");
         const gamesNumb = document.querySelector(".gameNumb");
         const winsNumb = document.querySelector(".winNumb");
         const losesNumb = document.querySelector(".losesNumb");
-        const symbolsArr = [0, 1, 2]
-
+        const symbolsArr = [0, 1, 2];
         const stats = {
             games: 0,
             wins: 0,
@@ -55,17 +53,14 @@
         }
         const player = {
             win: false,
+            halfWin: false,
             lose: false,
 
         }
 
-
-        //interfejs
-
-        //implementacja
         const cleaning = () => {
-            input.value = "";
             player.win = false;
+            player.halfWin = false;
             player.lose = false;
         };
         const draw = () => {
@@ -75,16 +70,17 @@
             symbols[0].style.backgroundImage = `url(${res1}.png)`;
             symbols[1].style.backgroundImage = `url(${res2}.png)`;
             symbols[2].style.backgroundImage = `url(${res3}.png)`;
-            console.log(symbols[0], res1);
-            if ((res1 === res2 && res1 === res3) || (res1 !== res2 && res1 !== res3 && res2 !== res3)) {
+            if (res1 === res2 && res1 === res3) {
                 player.win = true;
-                wallet.plrMoney += wallet.bet * 3;
+                wallet.plrMoney += wallet.bet * 4;
                 stats.wins++;
-                console.log("wygrana");
+            } else if ((res1 !== res2 && res1 !== res3 && res2 !== res3)) {
+                player.halfWin = true;
+                wallet.plrMoney += wallet.bet * 2;
+                stats.wins++;
             } else {
                 player.lose = true;
                 stats.loses++;
-                console.log("przegrana");
             }
         };
         const showResult = () => {
@@ -93,25 +89,28 @@
             gamesNumb.textContent = stats.games;
             winsNumb.textContent = stats.wins;
             losesNumb.textContent = stats.loses;
-            if (player.win) {
-                h2Text.style.color = "lawngreen";
-                h2Text.textContent = `WYGRALEŚ ${wallet.bet * 3} ₿*`;
-            } else if (player.lose) {
+            if (player.lose) {
                 h2Text.style.color = "orangered";
-                h2Text.textContent = `PRZEGRALEŚ ${wallet.bet} ₿*`;
+                h2Text.textContent = `PRZEGRALEŚ ${wallet.bet} B*`;
+            } else if (player.win) {
+                h2Text.style.color = "lawngreen";
+                h2Text.textContent = `WYGRALEŚ ${wallet.bet * 4} B*`;
+            } else if (player.halfWin) {
+                h2Text.style.color = "dodgerblue";
+                h2Text.textContent = `RZADKI TRAF! ${wallet.bet * 2} B*`;
             }
         };
 
         const startGame = (e) => {
             e.preventDefault();
             if (wallet.plrMoney == 0) {
-                return alert("Zostałeś goły i wesoły ;D odśwież stronę ,aby zagrać ponownie");
+                return alert("Przegrałeś wszystko, jeśli chcesz zagrać ponownie, odśwież stronę!");
             }
             wallet.bet = input.value;
             if (!wallet.bet || wallet.bet <= 0) {
                 alert("Podaj stawkę!")
             } else if (wallet.bet > wallet.plrMoney) {
-                alert("NIE OSZUKUJ!")
+                alert("Brak środków")
             } else {
                 wallet.plrMoney -= wallet.bet;
                 symbols.forEach(symbol => symbol.classList.toggle("active"));
@@ -122,7 +121,6 @@
                     const symbol2 = draw();
                     const symbol3 = draw();
                     checkResult(symbol1, symbol2, symbol3);
-                    console.log(symbol1, symbol2, symbol3)
                     showResult();
                 }, 700);
             }
