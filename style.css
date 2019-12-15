@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     cursor: default;
-    outline: none;
 }
 
 body {
@@ -31,6 +30,13 @@ h2 {
     font-family: 'Orbitron', sans-serif;
     letter-spacing: 3px;
     text-shadow: 0 0 20px deepskyblue;
+    text-transform: uppercase;
+    outline: none;
+}
+
+p {
+    font-size: 1rem;
+    padding: 0 2vw;
 }
 
 .point {
