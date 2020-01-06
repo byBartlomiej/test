@@ -29,9 +29,10 @@ h2 {
     font-size: 3rem;
     font-family: 'Orbitron', sans-serif;
     letter-spacing: 3px;
-    text-shadow: 0 0 20px deepskyblue;
+    text-shadow: 0 0 10px deepskyblue;
     text-transform: uppercase;
     outline: none;
+    transition: .1s;
 }
 
 p {
@@ -39,6 +40,7 @@ p {
     padding: 0 2vw;
 }
 
-.point {
+.point:hover {
     cursor: pointer;
+    text-shadow: 0 0 20px deepskyblue;
 }
