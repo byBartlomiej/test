@@ -51,27 +51,27 @@
         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
         <script type="text/babel">
             class App extends React.Component {
-    state = {
+        state = {
         text1Active: true,
         text2Active: true,
         text3Active: true,
-    }
-    handleClickTittle1 = () => {
+        }
+        handleClickTittle1 = () => {
         this.setState({
             text1Active: !this.state.text1Active
         })
-    }
-    handleClickTittle2 = () => {
+        }
+        handleClickTittle2 = () => {
         this.setState({
             text2Active: !this.state.text2Active
         })
-    }
-    handleClickTittle3 = () => {
+        }
+        handleClickTittle3 = () => {
         this.setState({
             text3Active: !this.state.text3Active
         })
-    }
-    render() {
+        }
+        render() {
         const p1Text1 = `Zakończenie montażu - 10 kwietnia 1984`;
         const p2Text1 = `Masa - 68 ton`;
         const p3Text1 = `Długość: 37,2 m`;
@@ -88,10 +88,10 @@
                 <h2 onClick={this.handleClickTittle2} class="point">{this.state.text2Active ? "historia" : <p>{p1Text2}</p>}</h2>
                 <h2 onClick={this.handleClickTittle3} class="point">{this.state.text3Active ? "ciekawostki" : <p>{p1Text3}</p>}</h2>
             </>
-        )
-    }
-}
-ReactDOM.render(<App />, document.getElementById("root"))
+                )
+            }
+        }
+        ReactDOM.render(<App />, document.getElementById("root"))
         </script>
     </body>
 
