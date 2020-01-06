@@ -1,56 +1,55 @@
-< !DOCTYPE html>
-    <html lang="pl">
+<html lang="pl">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="style.css">
-        <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
-        <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-        <title>Wahadłowiec Atlantis</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <title>Wahadłowiec Atlantis</title>
+</head>
 
-    <body>
-        <header></header>
-        <main>
-            <div id="root"></div>
-        </main>
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-        <script>
-            const $doc = $(document);
-            const $header = $('header');
-            const $main = $('main');
-            const $body = $('body');
+<body>
+    <header></header>
+    <main>
+        <div id="root"></div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script>
+        const $doc = $(document);
+        const $header = $('header');
+        const $main = $('main');
+        const $body = $('body');
 
-            $doc.on("scroll", function () {
-                $header.css({
-                    'background-color': 'black'
-                })
-                //aktualna wartość scrolla
-                const scrollPos = $doc.scrollTop();
-                //gdzie (ile pikseli) jest dany element od początku strony.
-                const sectionOffset = $main.offset().top;
-                // Jaka jest wysokość elementu
-                const headerHeight = $header.outerHeight();
-
-                if (scrollPos < sectionOffset) {
-                    $main.css({
-                        'opacity': 0 + scrollPos / headerHeight
-                    });
-                    $header.css({
-                        'opacity': 0 + scrollPos / headerHeight
-                    })
-                }
-                // console.log(1 - scrollPos / headerHeight)
+        $doc.on("scroll", function () {
+            $header.css({
+                'background-color': 'black'
             })
-        </script>
-        <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
-        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-        <script type="text/babel">
-            class App extends React.Component {
+            //aktualna wartość scrolla
+            const scrollPos = $doc.scrollTop();
+            //gdzie (ile pikseli) jest dany element od początku strony.
+            const sectionOffset = $main.offset().top;
+            // Jaka jest wysokość elementu
+            const headerHeight = $header.outerHeight();
+
+            if (scrollPos < sectionOffset) {
+                $main.css({
+                    'opacity': 0 + scrollPos / headerHeight
+                });
+                $header.css({
+                    'opacity': 0 + scrollPos / headerHeight
+                })
+            }
+            // console.log(1 - scrollPos / headerHeight)
+        })
+    </script>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        class App extends React.Component {
             state = {
             text1Active: true,
             text2Active: true,
@@ -93,6 +92,6 @@
             }
             ReactDOM.render(<App />, document.getElementById("root"))
         </script>
-    </body>
+</body>
 
-    </html>
+</html>
