@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/test/static/css/main.939c1258.chunk.css",
-    "main.js": "/test/static/js/main.afd0870e.chunk.js",
-    "main.js.map": "/test/static/js/main.afd0870e.chunk.js.map",
+    "main.css": "/test/static/css/main.bd203c22.chunk.css",
+    "main.js": "/test/static/js/main.e4e48bf9.chunk.js",
+    "main.js.map": "/test/static/js/main.e4e48bf9.chunk.js.map",
     "runtime-main.js": "/test/static/js/runtime-main.0c97cd2c.js",
     "runtime-main.js.map": "/test/static/js/runtime-main.0c97cd2c.js.map",
     "static/css/2.47e06e2e.chunk.css": "/test/static/css/2.47e06e2e.chunk.css",
     "static/js/2.7c764b64.chunk.js": "/test/static/js/2.7c764b64.chunk.js",
     "static/js/2.7c764b64.chunk.js.map": "/test/static/js/2.7c764b64.chunk.js.map",
     "index.html": "/test/index.html",
-    "precache-manifest.db10ce06808d66049b791d0b3d371742.js": "/test/precache-manifest.db10ce06808d66049b791d0b3d371742.js",
+    "precache-manifest.b2fe7c5456e9de3af87b67d86ef450dd.js": "/test/precache-manifest.b2fe7c5456e9de3af87b67d86ef450dd.js",
     "service-worker.js": "/test/service-worker.js",
     "static/css/2.47e06e2e.chunk.css.map": "/test/static/css/2.47e06e2e.chunk.css.map",
-    "static/css/main.939c1258.chunk.css.map": "/test/static/css/main.939c1258.chunk.css.map",
+    "static/css/main.bd203c22.chunk.css.map": "/test/static/css/main.bd203c22.chunk.css.map",
     "static/js/2.7c764b64.chunk.js.LICENSE": "/test/static/js/2.7c764b64.chunk.js.LICENSE",
+    "static/media/index.css": "/test/static/media/services.e0ebf3f0.jpg",
     "static/media/bazylia.jpg": "/test/static/media/bazylia.50100195.jpg",
     "static/media/brokul.jpg": "/test/static/media/brokul.ec31484c.jpg",
     "static/media/czosnek.jpg": "/test/static/media/czosnek.a7f9000e.jpg",
@@ -23,14 +24,13 @@
     "static/media/lniane.jpg": "/test/static/media/lniane.839e4756.jpg",
     "static/media/logo.png": "/test/static/media/logo.8a99d592.png",
     "static/media/olej.jpg": "/test/static/media/olej.15fb0092.jpg",
-    "static/media/poziomka.jpg": "/test/static/media/poziomka.e796be18.jpg",
-    "static/media/index.css": "/test/static/media/sklep.fed69c4a.jpg"
+    "static/media/poziomka.jpg": "/test/static/media/poziomka.e796be18.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.0c97cd2c.js",
     "static/css/2.47e06e2e.chunk.css",
     "static/js/2.7c764b64.chunk.js",
-    "static/css/main.939c1258.chunk.css",
-    "static/js/main.afd0870e.chunk.js"
+    "static/css/main.bd203c22.chunk.css",
+    "static/js/main.e4e48bf9.chunk.js"
   ]
 }
