@@ -1,0 +1,55 @@
+/* font-family: 'Cutive Mono', monospace; */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    background-color: #444;
+    font-size: 15px;
+}
+
+@media (max-width: 1150px) {
+    :root {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 639px) {
+    :root {
+        font-size: 10px;
+    }
+}
+
+html {
+    overflow: hidden;
+}
+
+body {
+    max-width: 1600px;
+    min-width: 360px;
+    margin: 0 auto;
+    background-color: #222;
+    box-shadow: 0 0 2px 0 black;
+    min-height: 100vh;
+    font-family: 'Cutive Mono', monospace;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+img {
+    width: 30%;
+}
+
+p {
+    padding-right: 10vw;
+    text-align: justify;
+    color: #fff;
+    font-size: 1.5rem;
+}
