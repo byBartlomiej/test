@@ -26,11 +26,6 @@ body {
   background-size: cover;
   background-position: center;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
 .wrapper {
   position: relative;
   min-height: 100vh;
