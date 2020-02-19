@@ -6,7 +6,7 @@
 
 :root {
     --image-width: 1280px;
-    --height-proportion: calc(2/3 * 100%);
+    --height-proportion: calc(2/3.5 * 100%);
 }
 
 .slider {
@@ -66,8 +66,8 @@ img {
     flex: 0 0 auto;
     justify-content: space-around;
     align-items: center;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 50%;
     box-shadow: 0 0 2px 0 black;
