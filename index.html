@@ -34,22 +34,47 @@
             left: 50vw;
             height: 150px;
         }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: rgb(223, 63, 5);
+            font-weight: bold;
+        }
     </style>
 </head>
 
 <body>
     <div class="ground"></div>
     <img src="rakieta.svg" alt="rakieta" class="rocket">
+    <button>STOP</button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
     <script>
+        const btn = document.querySelector('button');
         //projekt z wykorzystaniem lini czasu pozwala tworzyć wiele animacji występujących po sobie, jak również w wybranych momentach czasu
         const rocket = document.querySelector('.rocket');
         //wykorzystanie zmiennej:
         const height = '-40vh';
 
         //tworzymy nowy obiekt lini czasu:
-        const tl = new gsap.timeline();
+        const tl = new gsap.timeline({
+            //ilość powtórzeń:
+            repeat: 1,
+            //cofnięcie animacji po jej wykonaniu:
+            yoyo: true,
+            //opóżnienie cofnięcia:
+            repeatDelay: 3,
+            //wywołanie funkcji na początku/końcu animacji:
+            onStart: () => {
+                console.log('start');
+            },
+            onComplete: () => {
+                console.log('koniec');
+                btn.removeEventListener('click', pauseChecker);
+            },
+            paused: false
+        });
         //gsap.set() służy do ustawienia wartości początkowych dla elementu = w ccsie możemy go schować ,aby podczas odświeżania strony nie był widoczny
         tl.set(rocket, {
             rotation: '90',
@@ -57,31 +82,50 @@
         });
         //metoda timeScale(); pozwala sprawdzić całą nimacje w zwolnieniu/przyśpieszeniu
         // tl.timeScale(.2); w tym przykładzie wolniej o 20%;
-        tl.to(rocket, 1, {
-            rotation: 0,
-            y: '0',
-            delay: 1
-        });
-        tl.to(rocket, 1.5, {
-            y: height,
-            delay: 1,
-            ease: "power4.in"
-        });
-        tl.to(rocket, .5, {
-            //zapis poniżej oznacza odejmij jeszcze 100;
-            y: '-=100',
-            ease: "power2.out"
-        });
-        //ustawienie dodatkowego punktu na osi czasu, do którego można się odwołać
-        tl.add('dropDawn');
-        tl.to(rocket, 1.5, {
-            y: '75',
-            ease: "power1.in"
-        }, 'dropDawn');
-        tl.to(rocket, 1.5, {
-            rotation: '-90',
-            ease: "power1.in"
-        }, 'dropDawn');
+        tl
+            .to(rocket, 1, {
+                rotation: 0,
+                y: '0',
+                delay: 1
+            })
+            .to(rocket, 1.5, {
+                y: height,
+                delay: 1,
+                ease: "power4.in"
+            })
+            .to(rocket, .5, {
+                //zapis poniżej oznacza odejmij jeszcze 100;
+                y: '-=100',
+                ease: "power2.out"
+            })
+            //ustawienie dodatkowego punktu na osi czasu, do którego można się odwołać
+            .add('dropDawn')
+            .to(rocket, 1.5, {
+                y: '75',
+                ease: "power1.in"
+            }, 'dropDawn')
+            .to(rocket, 1.5, {
+                rotation: '-90',
+                ease: "power1.in"
+            }, 'dropDawn');
+
+        const pauseChecker = () => {
+            //pobranie wartości paused
+            const paused = tl.paused();
+            //sprawdzenie wartości paused
+            if (paused) {
+                //wznowienie
+                tl.resume();
+                console.log('wznawiam');
+                btn.textContent = 'STOP';
+            } else {
+                //zatrzymanie
+                tl.pause();
+                console.log('pauzuje');
+                btn.textContent = 'START';
+            }
+        }
+        btn.addEventListener('click', pauseChecker);
     </script>
 </body>
 
