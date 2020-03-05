@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gsap 2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            background-image: linear-gradient(rgb(181, 234, 255), rgb(6, 137, 180));
+        }
+
+        div.ground {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 15vh;
+            border-top: 1px solid #000;
+            background-image: linear-gradient(rgb(123, 207, 74), rgb(14, 143, 42));
+        }
+
+        img.rocket {
+            position: absolute;
+            bottom: 15vh;
+            left: 50vw;
+            height: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ground"></div>
+    <img src="rakieta.svg" alt="rakieta" class="rocket">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
+    <script>
+        //projekt z wykorzystaniem lini czasu pozwala tworzyć wiele animacji występujących po sobie, jak również w wybranych momentach czasu
+        const rocket = document.querySelector('.rocket');
+        //wykorzystanie zmiennej:
+        const height = '-40vh';
+
+        //tworzymy nowy obiekt lini czasu:
+        const tl = new gsap.timeline();
+        //gsap.set() służy do ustawienia wartości początkowych dla elementu = w ccsie możemy go schować ,aby podczas odświeżania strony nie był widoczny
+        tl.set(rocket, {
+            rotation: '90',
+            y: '75'
+        });
+        //metoda timeScale(); pozwala sprawdzić całą nimacje w zwolnieniu/przyśpieszeniu
+        // tl.timeScale(.2); w tym przykładzie wolniej o 20%;
+        tl.to(rocket, 1, {
+            rotation: 0,
+            y: '0',
+            delay: 1
+        });
+        tl.to(rocket, 1.5, {
+            y: height,
+            delay: 1,
+            ease: "power4.in"
+        });
+        tl.to(rocket, .5, {
+            //zapis poniżej oznacza odejmij jeszcze 100;
+            y: '-=100',
+            ease: "power2.out"
+        });
+        //ustawienie dodatkowego punktu na osi czasu, do którego można się odwołać
+        tl.add('dropDawn');
+        tl.to(rocket, 1.5, {
+            y: '75',
+            ease: "power1.in"
+        }, 'dropDawn');
+        tl.to(rocket, 1.5, {
+            rotation: '-90',
+            ease: "power1.in"
+        }, 'dropDawn');
+    </script>
+</body>
+
+</html>
