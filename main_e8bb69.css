@@ -13,7 +13,7 @@ body {
     min-height: 100vh;
     max-width: 1920px;
     margin: 0 auto;
-    background-image: url(images/view1.svg);
+    background-image: url(img/view1.svg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -22,6 +22,14 @@ body {
 
 img {
     position: absolute;
+    top: 12vh;
+    left: 10vw;
+    width: 6vw;
+    -webkit-animation: cloudMove 500s infinite linear alternate;
+            animation: cloudMove 500s infinite linear alternate;
+}
+
+img:nth-of-type(2) {
     top: 20vh;
     left: -5vw;
     width: 10vw;
@@ -59,17 +67,18 @@ div.ground {
 
 div.target {
     position: absolute;
-    top: 10%;
+    top: 15%;
     right: 20%;
-    height: 80%;
-    width: 80px;
+    height: 70%;
+    width: 5vw;
     border-radius: 50%;
     background-image: radial-gradient(lawngreen 50%, green 93%, #333);
 }
 
-@media (max-width: 800px) {
+@media (max-width: 640px) {
     div.target {
-        width: 40px;
+        top: 25%;
+        height: 50%;
     }
 }
 
@@ -80,9 +89,17 @@ div.target {
     width: 5vw;
     height: 5vw;
     border-radius: 50%;
-    background: radial-gradient(rgb(131, 224, 255), dodgerblue);
+    background-image: radial-gradient(rgb(131, 224, 255), dodgerblue);
     box-shadow: 0 0 1px 1px black;
     transform: translate(0, 0);
+}
+
+.green {
+    background-image: radial-gradient(rgb(131, 224, 255), chartreuse);
+}
+
+.red {
+    background-image: radial-gradient(rgb(131, 224, 255), crimson);
 }
 
 .spring {
@@ -93,7 +110,7 @@ div.target {
     height: 2vw;
     transform: translateX(-15%);
     background-color: rgb(164, 110, 24);
-    background: linear-gradient(0.25turn, rgb(119, 73, 0), rgb(199, 123, 0));
+    background-image: linear-gradient(0.25turn, rgb(119, 73, 0), rgb(199, 123, 0));
     border-right: 20px solid #222;
     box-shadow: 0 0 2px 0 whitesmoke;
     -webkit-animation: springMove 1s linear infinite alternate;
@@ -109,7 +126,7 @@ div.target {
     width: 5vw;
     height: 30vh;
     border-radius: 30% 30% 0 0;
-    background: linear-gradient(0.25turn, #333, rgb(27, 20, 19) 25%, rgb(55, 33, 24));
+    background-image: linear-gradient(0.25turn, #333, rgb(27, 20, 19) 25%, rgb(55, 33, 24));
 }
 
 .panel {
@@ -184,7 +201,7 @@ div.target {
     width: 10%;
     height: 100%;
     background-color: rgba(255, 68, 0, 0.65);
-    background: linear-gradient(0.25turn, rgba(255, 68, 0, 0.9), rgba(255, 68, 0, 0.5));
+    background-image: linear-gradient(0.25turn, rgba(255, 68, 0, 0.9), rgba(255, 68, 0, 0.5));
     -webkit-animation: fill 1s linear infinite alternate;
             animation: fill 1s linear infinite alternate;
     -webkit-animation-play-state: paused;
